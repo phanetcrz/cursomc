@@ -1,6 +1,5 @@
 package com.phanet.cursomc.resources;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,28 +7,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.phanet.cursomc.domain.Categoria;
-import com.phanet.cursomc.services.CategoriaService;
+import com.phanet.cursomc.domain.Cliente;
+import com.phanet.cursomc.services.ClienteService;
 
 @RestController
-@RequestMapping(value = "/categorias")
-public class CategoriaResource {
+@RequestMapping(value = "/clientes")
+public class ClienteResource {
 
 	@Autowired
-	private CategoriaService service; 
+	private ClienteService service; 
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id){
-		Categoria obj = service.buscar(id);
+		Cliente obj = service.buscar(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	/*
 	//sem banco
-	public List<Categoria> Listar() {
-		Categoria cat1 = new Categoria(1,"Informática");         
-		Categoria cat2 = new Categoria(2,"Escritório");
+	public List<Cliente> Listar() {
+		Cliente cat1 = new Cliente(1,"Informática");         
+		Cliente cat2 = new Cliente(2,"Escritório");
 		
-		List<Categoria> lista = new ArrayList<>();
+		List<Cliente> lista = new ArrayList<>();
 		lista.add(cat1);
 		lista.add(cat2);
 		
