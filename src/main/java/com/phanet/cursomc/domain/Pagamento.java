@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.phanet.cursomc.domain.enums.EstadoPagamento;
 
 @Inheritance(strategy=InheritanceType.JOINED)
@@ -23,7 +23,8 @@ public abstract class Pagamento implements Serializable {
 	private Integer id;
 	private Integer estado;
 	
-	@JsonBackReference
+	// @JsonBackReference removido na ultima na aula 29
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "pedido_id")
 	@MapsId
@@ -38,8 +39,6 @@ public abstract class Pagamento implements Serializable {
 		this.estado = estado.getCod();
 		this.pedido = pedido;
 	}
-
-	
 	
 	public Integer getId() {
 		return id;
